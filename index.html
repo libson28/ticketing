@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ligue 1 Sénégal - Billetterie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#00853f",
+                        darkgreen: "#00492b",
+                        gold: "#ffc72c"
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"]
+                    },
+                    boxShadow: {
+                        soft: "0 14px 40px rgba(15, 23, 42, .10)"
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        body { background: #020806; }
+        .hero {
+            background-image:
+                radial-gradient(circle at 72% 28%, rgba(18, 185, 96, .18), transparent 34%),
+                linear-gradient(90deg, rgba(1, 16, 13, .96) 0%, rgba(1, 18, 14, .78) 39%, rgba(1, 12, 11, .64) 100%),
+                linear-gradient(0deg, rgba(1, 10, 7, .96), rgba(1, 10, 7, .16) 48%, rgba(1, 10, 7, .88)),
+                url("hero.png");
+            background-position: center bottom;
+            background-size: cover;
+        }
+        .brand-mark {
+            background:
+                radial-gradient(circle at 30% 42%, #ffc72c 0 12%, transparent 13%),
+                conic-gradient(from 220deg, #00853f 0 33%, #ffc72c 33% 66%, #e31b23 66% 100%);
+        }
+        .crest {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: #fff;
+            border: 1px solid #dbe4ee;
+            box-shadow: 0 7px 18px rgba(15, 23, 42, .08);
+            overflow: hidden;
+        }
+        .crest span {
+            width: 38px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-weight: 800;
+            font-size: 12px;
+            line-height: 1;
+            text-align: center;
+            clip-path: polygon(12% 0, 88% 0, 100% 32%, 50% 100%, 0 32%);
+        }
+        .crest img {
+            width: 82%;
+            height: 82%;
+            object-fit: contain;
+        }
+        .site-header {
+            background: rgba(2, 8, 6, .62);
+            border-bottom: 1px solid rgba(255, 255, 255, .10);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, .20);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+        .payment-logo {
+            max-width: 78px;
+            height: 28px;
+            object-fit: contain;
+        }
+        .ticket-notch:before,
+        .ticket-notch:after {
+            content: "";
+            position: absolute;
+            top: 52%;
+            width: 22px;
+            height: 22px;
+            border-radius: 999px;
+            background: #007a38;
+        }
+        .ticket-notch:before { left: -11px; }
+        .ticket-notch:after { right: -11px; }
+        .qr-img {
+            image-rendering: pixelated;
+            background: #fff;
+        }
+        .hero-card {
+            background: linear-gradient(145deg, rgba(12, 55, 38, .92), rgba(4, 22, 18, .9));
+            border: 1px solid rgba(84, 188, 126, .28);
+            box-shadow: 0 28px 90px rgba(0, 0, 0, .46), inset 0 1px 0 rgba(255, 255, 255, .08);
+            backdrop-filter: blur(18px);
+        }
+        .hero-stats {
+            background: rgba(4, 28, 22, .7);
+            border: 1px solid rgba(82, 170, 119, .18);
+            backdrop-filter: blur(18px);
+        }
+        .nav-pill {
+            background: rgba(255, 255, 255, .09);
+            border: 1px solid rgba(255, 255, 255, .13);
+            backdrop-filter: blur(14px);
+        }
+        .surface-dark {
+            background: #111111;
+            color: #fff;
+            border-color: rgba(255, 255, 255, .10);
+        }
+        .surface-dark input,
+        .surface-dark button:not(.bg-primary):not([class*="bg-gradient"]) {
+            background-color: #181818;
+            color: #fff;
+            border-color: rgba(255, 255, 255, .10);
+        }
+        .surface-dark input::placeholder {
+            color: rgba(255, 255, 255, .45);
+        }
+        .surface-dark .text-slate-600,
+        .surface-dark .text-slate-500 {
+            color: rgba(255, 255, 255, .62) !important;
+        }
+        .surface-dark .border-slate-200,
+        .surface-dark .border-slate-100 {
+            border-color: rgba(255, 255, 255, .10) !important;
+        }
+        .surface-dark .bg-green-50,
+        .surface-dark button.bg-green-50 {
+            background-color: rgba(0, 133, 63, .16) !important;
+        }
+        .surface-dark .bg-slate-100,
+        .surface-dark .bg-slate-50,
+        .surface-dark .bg-white {
+            background-color: #181818 !important;
+        }
+        .surface-dark .border-green-300 {
+            border-color: rgba(0, 133, 63, .45) !important;
+        }
+        .surface-dark .text-primary {
+            color: #25d176 !important;
+        }
+        @media (max-width: 768px) {
+            .hero { background-position: center; }
+        }
+    </style>
+</head>
+<body class="bg-black font-sans text-slate-900">
+    <header class="site-header absolute sticky left-0 right-0 top-0 z-50">
+        <div class="mx-auto flex h-24 max-w-[1740px] items-center justify-between gap-6 px-6 lg:px-12">
+            <a class="flex items-center gap-3 text-white" href="#">
+                <div class="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-[#14b85d] to-[#0a743e] shadow-lg shadow-green-900/40"><i class="fa-solid fa-futbol text-2xl"></i></div>
+                <div class="leading-none">
+                    <div class="text-2xl font-extrabold tracking-tight">SEN<span class="text-[#18b85f]">TICKET</span></div>
+                    <div class="mt-1.5 text-sm font-medium text-white/75">Billetterie Officielle</div>
+                </div>
+            </a>
+
+            <!-- <nav class="hidden items-center gap-10 text-base font-bold text-white/75 xl:flex">
+                <a class="relative text-white" href="#">Accueil<span class="absolute -bottom-3 left-0 h-1 w-full rounded-full bg-[#18b85f]"></span></a>
+                <a class="transition hover:text-white" href="#">Matchs</a>
+                <a class="transition hover:text-white" href="#">Stades</a>
+                <a class="transition hover:text-white" href="#">Clubs</a>
+                <a class="transition hover:text-white" href="#">À propos</a>
+            </nav> -->
+
+            <div class="flex items-center gap-3">           
+                <button class="flex h-12 items-center gap-3 rounded-xl bg-gradient-to-r from-[#16b85d] to-[#0aa84e] px-6 text-base font-extrabold text-white shadow-lg shadow-green-950/40">
+                    <i class="fa-regular fa-user text-xl"></i>
+                    <a href="log.html">Connexion</a>
+                    
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero relative min-h-[860px] overflow-hidden lg:min-h-screen">
+            <div class="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black to-transparent"></div>
+            <div class="relative z-10 mx-auto grid min-h-[760px] max-w-[1740px] items-center gap-10 px-6 pb-20 pt-16 lg:grid-cols-[1.1fr_.9fr] lg:px-12">
+                <div class="max-w-[760px] self-start text-white">
+                    <div class="mb-7 inline-flex items-center gap-4 rounded-full bg-green-900/60 px-4 py-2 text-sm font-extrabold tracking-wide text-white shadow-lg shadow-black/20 backdrop-blur">
+                        <span class="grid h-7 w-10 place-items-center rounded-md bg-[#0caf55] text-sm">SN</span>
+                        CHAMPIONNAT NATIONAL DU SÉNÉGAL
+                    </div>
+                    <h1 class="max-w-[700px] text-4xl font-extrabold leading-[1.12] tracking-tight text-white drop-shadow-2xl md:text-6xl lg:text-[62px]">
+                        Vivez la passion du football sénégalais
+                        <span class="block text-[#18b85f]">en direct</span>
+                    </h1>
+                    <p class="mt-5 max-w-[670px] text-base font-medium leading-8 text-white/78 md:text-xl">
+                        Réservez vos billets pour tous les matchs du championnat. Rapide, sécurisé et sans déplacement.
+                    </p>
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <button class="inline-flex h-[52px] items-center gap-4 rounded-xl bg-gradient-to-r from-[#18b85f] to-[#0aa84e] px-7 text-base font-extrabold text-white shadow-xl shadow-green-950/40">
+                            <i class="fa-solid fa-ticket text-xl"></i>
+                            Voir les matchs
+                        </button>
+                        <button class="inline-flex h-[52px] items-center gap-4 rounded-xl bg-white px-7 text-base font-extrabold text-slate-900 shadow-xl shadow-black/20">
+                            <i class="fa-solid fa-landmark text-xl text-slate-800"></i>
+                            Découvrir les stades
+                        </button>
+                    </div>
+                </div>
+
+                <div class="hero-card mx-auto w-full max-w-[560px] rounded-3xl p-7 text-white lg:-mt-20 xl:-mt-28">
+                    <div class="mb-10 flex items-center justify-between text-sm">
+                        <span class="inline-flex items-center gap-2 rounded-full bg-red-600 px-3.5 py-2 text-xs font-extrabold"><span class="h-2 w-2.5 rounded-full bg-red-300"></span>AUJOURD'HUI</span>
+                        <span class="rounded-lg bg-green-600/35 px-3.5 py-2 text-sm font-extrabold text-[#30d876]">LIGUE 1</span>
+                    </div>
+                    <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-6 text-center">
+                        <div>
+                            <div class="crest mx-auto h-15 w-15"><img alt="Logo ASC Jaraaf" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX8mc8jd0OHAZrD6GbX0IlSQlTQRu5d33pVd4N0Ve8dw&s=10"></div>
+                            <h3 class="mt-5 text-sm font-extrabold">ASC Jaraaf</h3>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-extrabold md:text-5xl">VS</div>
+                            <div class="mt-8 flex items-center justify-center gap-3 text-sm text-white/85"><i class="fa-regular fa-clock text-[#25d176]"></i>18:00</div>
+                        </div>
+                        <div>
+                            <div class="crest mx-auto h-15 w-15"><img alt="Logo Génération Foot" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3kdw96MFpoYmr8y-IefXnxND-w01FtDr9hIjLvmvmHg&s=10"></div>
+                            <h3 class="mt-5 text-sm font-extrabold">Génération Foot</h3>
+                        </div>
+                    </div>
+                    <div class="mt-10 grid border-y border-white/10 md:grid-cols-2">
+                        <div class="flex items-center gap-4 border-white/10 py-6 md:border-r">
+                            <div class="grid h-14 w-14 place-items-center rounded-xl bg-white/10 text-1xl text-white"><i class="fa-solid fa-landmark"></i></div>
+                            <div><p class="font-extrabold">Stade A. Wade</p><p class="mt-2 text-white/65">Diamniadio</p></div>
+                        </div>
+                        <div class="flex items-center gap-4 py-6 md:pl-6">
+                            <div class="grid h-14 w-14 place-items-center rounded-xl bg-green-500/15 text-2xl text-[#25d176]"><i class="fa-solid fa-ticket"></i></div>
+                            <div><p class="text-sm text-white/65">À partir de</p><p class="mt-1 text-base font-extrabold text-[#20c76a]">2 000 FCFA</p></div>
+                        </div>
+                    </div>
+                    <button class="mt-7 flex h-[52px] w-full items-center justify-center gap-4 rounded-xl bg-gradient-to-r from-[#18b85f] to-[#0aa84e] text-base font-extrabold shadow-xl shadow-green-950/40">
+                        Acheter un billet
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+               
+            </div>
+        </section>
+
+        <section class="relative z-10 mx-auto -mt-28 max-w-[1260px] px-5">
+            <div class="surface-dark grid gap-4 rounded-xl border border-white/10 bg-[#111111] p-6 text-white shadow-soft md:grid-cols-[1.7fr_1fr_1fr_1fr_auto]">
+                <label class="relative">
+                    <input class="h-11 w-full rounded-md border border-white/10 bg-[#181818] pl-5 pr-11 text-sm text-white outline-none placeholder:text-white/45 focus:border-primary" placeholder="Rechercher un club, un stade ou une ville...">
+                    <i class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 -translate-y-1/2 text-white/50"></i>
+                </label>
+                <label class="relative block">
+                    <select class="h-11 w-full rounded-md border border-white/10 bg-[#181818] px-5 text-sm font-bold text-white outline-none focus:border-primary appearance-none pr-10">
+                        <option value="">Club</option>
+                        <option>ASC Jaraaf</option>
+                        <option>Génération Foot</option>
+                        <option>Casa Sports</option>
+                        <option>Teungueth FC</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-white/50 text-xs"></i>
+                </label>
+                <label class="relative block">
+                    <select class="h-11 w-full rounded-md border border-white/10 bg-[#181818] px-5 text-sm font-bold text-white outline-none focus:border-primary appearance-none pr-10">
+                        <option value="">Stade</option>
+                        <option>Stade A. Wade</option>
+                        <option>Stade Amadou Barry</option>
+                        <option>S. Ngalandou Diouf</option>
+                        <option>Stade Demba Diop</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-white/50 text-xs"></i>
+                </label>
+                <label class="relative block">
+                    <select class="h-11 w-full rounded-md border border-white/10 bg-[#181818] px-5 text-sm font-bold text-white outline-none focus:border-primary appearance-none pr-10">
+                        <option value="">Ville</option>
+                        <option>Dakar</option>
+                        <option>Diamniadio</option>
+                        <option>Rufisque</option>
+                        <option>Louga</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-white/50 text-xs"></i>
+                </label>
+                <button class="flex h-11 items-center gap-3 px-5 text-sm font-bold text-white/80">
+                    <i class="fa-solid fa-rotate-right text-white/50"></i>
+                    Réinitialiser
+                </button>
+            </div>
+        </section>
+
+        <section class="mx-auto mt-9 max-w-[1260px] px-5">
+            <div class="mb-4 flex items-center gap-3 border-b border-white/10 pb-3">
+                <i class="fa-regular fa-futbol text-primary"></i>
+                <h2 class="text-xl font-extrabold text-white">Matchs du jour</h2>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-3">
+                <article class="surface-dark rounded-xl border border-slate-200 bg-[#111111] p-6 text-white shadow-soft">
+                    <div class="mb-4 inline-flex rounded-full border border-green-300 bg-green-50 px-3 py-1 text-xs font-bold text-primary"><i class="fa-regular fa-calendar mr-2"></i>Aujourd'hui</div>
+                    <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+                        <div class="text-center">
+                            <div class="crest mx-auto"><img alt="Logo Casa Sports" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjfXjkRwM4imJkYviMrGjW0fJTdzTSKi_Kw0OlNYVawQ&s"></div>
+                            <h3 class="mt-3 text-sm font-extrabold">Casa Sports</h3>
+                        </div>
+                        <b class="text-xs">VS</b>
+                        <div class="text-center">
+                            <div class="crest mx-auto"><img alt="Logo USG" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTio675ySRLniTR5AjHlvvZSDqQOhLh_NObGFcBBRX5w&s=10"></div>
+                           
+                            <h3 class="mt-3 text-sm font-extrabold">US Gorée</h3>
+                        </div>
+                    </div>
+                    <div class="mt-7 grid grid-cols-2 gap-y-3 text-sm text-slate-600">
+                        <span><i class="fa-regular fa-calendar mr-3"></i>25 mai 2025</span>
+                        <span><i class="fa-regular fa-clock mr-3"></i>16:00</span>
+                        <span><i class="fa-solid fa-landmark mr-3"></i>Stade Amadou Barry</span>
+                        <span><i class="fa-solid fa-location-dot mr-3"></i>Guédiawaye</span>
+                    </div>
+                    <div class="mt-6 flex items-end justify-between border-t border-slate-100 pt-5">
+                        <div><p class="text-[10px] text-slate-500">À partir de</p><p class="text-base font-extrabold text-primary">2 000 FCFA</p></div>
+                        <button class="h-10 rounded-md bg-primary px-5 text-sm font-bold text-white">Acheter</button>
+                    </div>
+                </article>
+
+                <article class="surface-dark rounded-xl border border-slate-200 bg-[#111111] p-6 text-white shadow-soft">
+                    <div class="mb-4 inline-flex rounded-full border border-green-300 bg-green-50 px-3 py-1 text-xs font-bold text-primary"><i class="fa-regular fa-calendar mr-2"></i>Aujourd'hui</div>
+                    <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+                        <div class="text-center">
+                            <div class="crest mx-auto h-15 w-15"><img alt="Logo ASC Jaraaf" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX8mc8jd0OHAZrD6GbX0IlSQlTQRu5d33pVd4N0Ve8dw&s=10"></div>
+                            <h3 class="mt-5 text-sm font-extrabold">ASC Jaraaf</h3>
+                        </div>
+                        <b class="text-xs">VS</b>
+                        <div class="text-center">
+                           <div class="crest mx-auto h-15 w-15"><img alt="Logo Génération Foot" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3kdw96MFpoYmr8y-IefXnxND-w01FtDr9hIjLvmvmHg&s=10"></div>
+                            <h3 class="mt-5 text-sm font-extrabold">Génération Foot</h3>
+                        </div>
+                    </div>
+                    <div class="mt-7 grid grid-cols-2 gap-y-3 text-sm text-slate-600">
+                        <span><i class="fa-regular fa-calendar mr-3"></i>25 mai 2025</span>
+                        <span><i class="fa-regular fa-clock mr-3"></i>18:30</span>
+                        <span><i class="fa-solid fa-landmark mr-3"></i>Stade A. Wade</span>
+                        <span><i class="fa-solid fa-location-dot mr-3"></i>Diamniadio</span>
+                    </div>
+                    <div class="mt-6 flex items-end justify-between border-t border-slate-100 pt-5">
+                        <div><p class="text-[10px] text-slate-500">À partir de</p><p class="text-base font-extrabold text-primary">2 500 FCFA</p></div>
+                        <button class="h-10 rounded-md bg-primary px-5 text-sm font-bold text-white">Acheter</button>
+                    </div>
+                </article>
+
+                <article class="surface-dark rounded-xl border border-slate-200 bg-[#111111] p-6 text-white shadow-soft">
+                    <div class="mb-4 inline-flex rounded-full border border-green-300 bg-green-50 px-3 py-1 text-xs font-bold text-primary"><i class="fa-regular fa-calendar mr-2"></i>Aujourd'hui</div>
+                    <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+                        <div class="text-center">
+                            <div class="crest mx-auto"><img alt="Logo Dakar Sacré-Cœur" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUez9eC3KxoO711ny080zQUTA_YURArBlRpttfT8fXBQ&s=10"></div>
+                            <h3 class="mt-3 text-sm font-extrabold">Teungueth FC</h3>
+                        </div>
+                        <b class="text-xs">VS</b>
+                        <div class="text-center">
+                            <div class="crest mx-auto"><img alt="Logo Dakar Sacré-Cœur" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsRzjD66KbFZKroRtTdvZk_CmqVxQUQeB9KKp-x4INkA&s=10"></div>
+                            <h3 class="mt-3 text-sm font-extrabold">Dakar Sacré-Cœur</h3>
+                        </div>
+                    </div>
+                    <div class="mt-7 grid grid-cols-2 gap-y-3 text-sm text-slate-600">
+                        <span><i class="fa-regular fa-calendar mr-3"></i>25 mai 2025</span>
+                        <span><i class="fa-regular fa-clock mr-3"></i>20:45</span>
+                        <span><i class="fa-solid fa-landmark mr-3"></i>S. Ngalandou Diouf</span>
+                        <span><i class="fa-solid fa-location-dot mr-3"></i>Rufisque</span>
+                    </div>
+                    <div class="mt-6 flex items-end justify-between border-t border-slate-100 pt-5">
+                        <div><p class="text-[10px] text-slate-500">À partir de</p><p class="text-base font-extrabold text-primary">1 500 FCFA</p></div>
+                        <button class="h-10 rounded-md bg-primary px-5 text-sm font-bold text-white">Acheter</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="mx-auto mt-10 max-w-[1260px] px-5">
+            <div class="mb-4 flex items-center gap-3">
+                <i class="fa-regular fa-calendar text-white/70"></i>
+                <h2 class="text-xl font-extrabold text-white">Matchs à venir</h2>
+            </div>
+            <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-2">
+                <article class="surface-dark rounded-xl border border-slate-200 bg-[#111111] p-5 text-white shadow-soft">
+                    <div class="mb-3 inline-flex rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600"><i class="fa-regular fa-calendar mr-2"></i>À venir</div>
+                    <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-2 text-center">
+                        <div><div class="crest mx-auto"><img alt="Logo ASC Ndiambour" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQswEqPMtSKQTuCrk397Qr6w8SXfO9JAj-3vP2BqCBMmQ&s=10"></div><b class="mt-3 block text-sm">ASC Ndiambour</b></div>
+                        <b class="text-xs">VS</b>
+                        <div><div class="crest mx-auto"><img alt="Logo Sonacos" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKkekr08anj4Nu6llbShFEpJFLl2tVz5nULltxHS19yg&s=10"></div><b class="mt-3 block text-sm">Sonacos</b></div>
+                    </div>
+                    <div class="mt-5 grid grid-cols-2 gap-y-3 text-xs text-slate-600">
+                        <span><i class="fa-regular fa-calendar mr-2"></i>26 mai 2025</span><span><i class="fa-regular fa-clock mr-2"></i>16:00</span>
+                        <span><i class="fa-solid fa-landmark mr-2"></i>Stade Alboury Ndiaye</span><span><i class="fa-solid fa-location-dot mr-2"></i>Louga</span>
+                    </div>
+                    <div class="mt-5 flex items-end justify-between border-t border-slate-100 pt-4">
+                        <div><span class="text-[10px] text-slate-500">À partir de</span><b class="block text-sm text-primary">1 500 FCFA</b></div>
+                        <button class="h-9 rounded-md bg-primary px-4 text-xs font-bold text-white">Acheter</button>
+                    </div>
+                </article>
+
+                <article class="surface-dark rounded-xl border border-slate-200 bg-[#111111] p-5 text-white shadow-soft">
+                    <div class="mb-3 inline-flex rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600"><i class="fa-regular fa-calendar mr-2"></i>À venir</div>
+                    <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-2 text-center">
+                        <div><div class="crest mx-auto"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR25UpSnqhuA3QFaq9PMkL8VW2CfldlvNN4dEiT1g87AQ&s" alt=""><span class="bg-[#e23232]">GFC</span></div><b class="mt-3 block text-sm">Guédiawaye FC</b></div>
+                        <b class="text-xs">VS</b>
+                        <div><div class="crest mx-auto"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXMGHWNNsoMcP1cgT8EZEBWOb9SzU3MOF4HlyMvQ-B2g&s=10" alt=""><span class="bg-[#f8fafc] text-slate-900">AJEL</span></div><b class="mt-3 block text-sm">AJEL</b></div>
+                    </div>
+                    <div class="mt-5 grid grid-cols-2 gap-y-3 text-xs text-slate-600">
+                        <span><i class="fa-regular fa-calendar mr-2"></i>26 mai 2025</span><span><i class="fa-regular fa-clock mr-2"></i>18:30</span>
+                        <span><i class="fa-solid fa-landmark mr-2"></i>Stade Amadou Barry</span><span><i class="fa-solid fa-location-dot mr-2"></i>Guédiawaye</span>
+                    </div>
+                    <div class="mt-5 flex items-end justify-between border-t border-slate-100 pt-4">
+                        <div><span class="text-[10px] text-slate-500">À partir de</span><b class="block text-sm text-primary">2 000 FCFA</b></div>
+                        <button class="h-9 rounded-md bg-primary px-4 text-xs font-bold text-white">Acheter</button>
+                    </div>
+                </article>
+
+                <article class="surface-dark rounded-xl border border-slate-200 bg-[#111111] p-5 text-white shadow-soft">
+                    <div class="mb-3 inline-flex rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600"><i class="fa-regular fa-calendar mr-2"></i>À venir</div>
+                    <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-2 text-center">
+                        <div><div class="crest mx-auto"><img alt="Logo Dakar Sacré-Cœur" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvvJWAFrVzXbq2ewowYTS6X1nBjFZgo8X8zMj_ZwmeFQ&s=10"></div><b class="mt-3 block text-sm">Dakar SC</b></div>
+                        <b class="text-xs">VS</b>
+                        <div><div class="crest mx-auto"><img alt="Logo CNEPS Excellence" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDkKXpsJhLBE2vnuvl4k-8cbQOj0UqDtva-CqYk0DVRQ&s=10"></div><b class="mt-3 block text-sm">CNEPS Excellence</b></div>
+                    </div>
+                    <div class="mt-5 grid grid-cols-2 gap-y-3 text-xs text-slate-600">
+                        <span><i class="fa-regular fa-calendar mr-2"></i>27 mai 2025</span><span><i class="fa-regular fa-clock mr-2"></i>16:00</span>
+                        <span><i class="fa-solid fa-landmark mr-2"></i>Stade Léopold Sédar</span><span><i class="fa-solid fa-location-dot mr-2"></i>Dakar</span>
+                    </div>
+                    <div class="mt-5 flex items-end justify-between border-t border-slate-100 pt-4">
+                        <div><span class="text-[10px] text-slate-500">À partir de</span><b class="block text-sm text-primary">2 500 FCFA</b></div>
+                        <button class="h-9 rounded-md bg-primary px-4 text-xs font-bold text-white">Acheter</button>
+                    </div>
+                </article>
+
+                <article class="surface-dark rounded-xl border border-slate-200 bg-[#111111] p-5 text-white shadow-soft">
+                    <div class="mb-3 inline-flex rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600"><i class="fa-regular fa-calendar mr-2"></i>À venir</div>
+                    <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-2 text-center">
+                        <div><div class="crest mx-auto"><img alt="Logo Linguère de Saint-Louis" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4TKmt8frWfW8HyOEgKgMvPV9rBGUXH4Ijg8qGDrBVkw&s=10"></div><b class="mt-3 block text-sm">Linguère de Saint-Louis</b></div>
+                        <b class="text-xs">VS</b>
+                        <div><div class="crest mx-auto"><img alt="Logo AS Pikine" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYuKSyjMwNE47ctAy7OG4OLAixDaxR94OMvu9QIBWFFA&s=10"></div><b class="mt-3 block text-sm">AS Pikine</b></div>
+                    </div>
+                    <div class="mt-5 grid grid-cols-2 gap-y-3 text-xs text-slate-600">
+                        <span><i class="fa-regular fa-calendar mr-2"></i>27 mai 2025</span><span><i class="fa-regular fa-clock mr-2"></i>18:30</span>
+                        <span><i class="fa-solid fa-landmark mr-2"></i>Stade Alassane Djigo</span><span><i class="fa-solid fa-location-dot mr-2"></i>Saint-Louis</span>
+                    </div>
+                    <div class="mt-5 flex items-end justify-between border-t border-slate-100 pt-4">
+                        <div><span class="text-[10px] text-slate-500">À partir de</span><b class="block text-sm text-primary">1 500 FCFA</b></div>
+                        <button class="h-9 rounded-md bg-primary px-4 text-xs font-bold text-white">Acheter</button>
+                    </div>
+                </article>
+            </div>
+
+            <div class="mt-7 flex items-center justify-center gap-4 text-sm font-bold text-white">
+                <button class="grid h-8 w-8 place-items-center rounded-md border border-slate-200"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                <button class="grid h-8 w-8 place-items-center rounded-md text-primary text-white">1</button>
+                <span>2</span><span>3</span><span>4</span><span>5</span><span>...</span><span>10</span>
+                <button class="grid h-8 w-8 place-items-center rounded-md"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+            </div>
+        </section>
+
+        <!-- <section class="mx-auto mt-5 grid max-w-[1160px] gap-10 px-5 lg:grid-cols-[1.1fr_.9fr]">
+            <div class="surface-dark rounded-xl border border-slate-200 bg-[#111111] p-5 text-white shadow-soft">
+                <div class="mb-5 grid grid-cols-[80px_1fr_80px] items-center gap-5 border-b border-slate-200 pb-5">
+                    <div class="crest"><img alt="Logo Casa Sports" src="https://commons.wikimedia.org/wiki/Special:FilePath/IMG%20casa.png"></div>
+                    <div class="text-center">
+                        <span class="rounded-full bg-green-50 px-3 py-1 text-xs font-bold text-primary">Aujourd'hui · 16:00</span>
+                        <h2 class="mt-3 text-2xl font-extrabold">Casa Sports vs US Gorée</h2>
+                        <p class="mt-1 text-sm text-slate-500"><i class="fa-solid fa-location-dot mr-2"></i>Stade Amadou Barry, Guédiawaye</p>
+                    </div>
+                    <div class="crest"><span class="bg-[#1f61b6]">USG</span></div>
+                </div>
+                <div class="grid gap-6 md:grid-cols-[1.35fr_1fr]">
+                    <div>
+                        <h3 class="mb-3 text-sm font-extrabold">Choisir la catégorie <i class="fa-solid fa-chevron-down ml-1 text-xs"></i></h3>
+                        <div class="space-y-3">
+                            <label class="flex cursor-pointer items-center justify-between rounded-md border border-slate-200 p-4 text-sm"><span><input class="mr-3 accent-primary" name="cat" type="radio">VIP</span><span>10 000 FCFA</span></label>
+                            <label class="flex cursor-pointer items-center justify-between rounded-md border border-primary bg-green-50 p-4 text-sm font-bold"><span><input checked class="mr-3 accent-primary" name="cat" type="radio">Tribune</span><span>3 000 FCFA</span></label>
+                            <label class="flex cursor-pointer items-center justify-between rounded-md border border-slate-200 p-4 text-sm"><span><input class="mr-3 accent-primary" name="cat" type="radio">Pelouse</span><span>1 500 FCFA</span></label>
+                        </div>
+                    </div>
+                    <div class="border-l border-slate-200 pl-6">
+                        <h3 class="mb-5 text-sm font-extrabold">Nombre de billets <i class="fa-solid fa-chevron-down ml-1 text-xs"></i></h3>
+                        <div class="inline-grid grid-cols-3 overflow-hidden rounded-lg border border-slate-200 bg-slate-50">
+                            <button class="h-14 w-16 text-xl">−</button>
+                            <div class="grid h-14 w-16 place-items-center bg-white text-2xl font-extrabold">2</div>
+                            <button class="h-14 w-16 text-xl">+</button>
+                        </div>
+                        <p class="mt-4 text-xs text-slate-500">Max. 10 billets par commande</p>
+                    </div>
+                </div>
+                <div class="mt-7">
+                    <h3 class="mb-3 text-sm font-extrabold">Moyen de paiement</h3>
+                    <div class="grid gap-3 md:grid-cols-3">
+                        <button class="flex h-14 items-center justify-center gap-3 rounded-md border border-primary bg-green-50 text-sm font-bold"><img class="payment-logo" alt="Logo Orange Money" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Logo_Orange_Money.svg/langfr-250px-Logo_Orange_Money.svg.png">Orange Money</button>
+                        <button class="flex h-14 items-center justify-center gap-3 rounded-md border border-slate-200 text-sm font-bold"><img class="payment-logo" alt="Logo Wave" src="https://www.wave.com/img/nav-logo.png">Wave</button>
+                        <button class="flex h-14 items-center justify-center gap-3 rounded-md border border-slate-200 text-sm font-bold"><img class="payment-logo" alt="Logo Yas" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Yas_logo_2024.svg/langfr-250px-Yas_logo_2024.svg.png">Yas Money</button>
+                    </div>
+                </div>
+                <div class="mt-7 flex items-end justify-between">
+                    <div><p class="text-sm font-semibold text-slate-500">Total</p><p class="text-2xl font-extrabold text-primary" data-modal-total>6 000 FCFA</p></div>
+                    <button class="h-14 rounded-md bg-primary px-12 text-sm font-bold text-white">Payer 6 000 FCFA <i class="fa-solid fa-lock ml-5"></i></button>
+                </div>
+            </div>
+
+            
+        </section> -->
+
+        <section class="mx-auto mt-8 grid max-w-[1120px] gap-6 px-5 py-6 text-sm font-semibold text-white/75 md:grid-cols-4">
+            <p><i class="fa-solid fa-lock mr-3 text-[#25d176]"></i>Paiement 100% sécurisé</p>
+            <p><i class="fa-regular fa-shield mr-3 text-[#25d176]"></i>Billets officiels certifiés</p>
+            <p><i class="fa-regular fa-circle-check mr-3 text-[#25d176]"></i>Accès garanti au stade</p>
+            <p><i class="fa-regular fa-comment mr-3 text-[#25d176]"></i>Support disponible 7j/7</p>
+        </section>
+    </main>
+
+    <div id="ticketModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 px-4 py-3 backdrop-blur-sm h-full" aria-hidden="true">
+        <div class="absolute inset-0" data-ticket-close></div>
+        <div class="relative z-10 w-full max-w-[960px]">
+            <button class="absolute -right-2 -top-2 grid h-10 w-10 place-items-center rounded-full bg-white text-slate-950 shadow-xl" type="button" aria-label="Fermer la popup" data-ticket-close>
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="surface-dark max-h-[calc(100vh-2rem)] overflow-hidden rounded-xl border border-slate-200 bg-[#111111] p-4 text-white shadow-soft">
+                <div data-ticket-payment>
+                <div class="mb-4 grid grid-cols-[58px_1fr_58px] items-center gap-4 border-b border-slate-200 pb-4 md:grid-cols-[68px_1fr_68px] md:gap-5">
+                    <div class="crest" data-modal-team-logo="home"><img alt="Logo Casa Sports" src="https://commons.wikimedia.org/wiki/Special:FilePath/IMG%20casa.png"></div>
+                    <div class="text-center">
+                        <span class="rounded-full bg-green-50 px-3 py-1 text-xs font-bold text-primary" data-modal-match-time>Aujourd'hui · 16:00</span>
+                        <h2 class="mt-3 text-xl font-extrabold md:text-2xl" data-modal-match-title>Casa Sports vs US Gorée</h2>
+                        <p class="mt-1 text-sm text-slate-500"><i class="fa-solid fa-location-dot mr-2"></i><span data-modal-match-place>Stade Amadou Barry, Guédiawaye</span></p>
+                    </div>
+                    <div class="crest" data-modal-team-logo="away"><span class="bg-[#1f61b6]">USG</span></div>
+                </div>
+                <div class="grid gap-6 md:grid-cols-[1.35fr_1fr]">
+                    <div>
+                        <h3 class="mb-2 text-sm font-extrabold">Choisir la catégorie <i class="fa-solid fa-chevron-down ml-1 text-xs"></i></h3>
+                        <div class="space-y-2">
+                            <label class="flex cursor-pointer items-center justify-between rounded-md border border-slate-200 p-3 text-sm" data-cat-option><span><input class="mr-3 accent-primary" name="modal-cat" type="radio">VIP</span><span>10 000 FCFA</span></label>
+                            <label class="flex cursor-pointer items-center justify-between rounded-md border border-primary bg-green-50 p-3 text-sm font-bold" data-cat-option><span><input checked class="mr-3 accent-primary" name="modal-cat" type="radio">Tribune</span><span>3 000 FCFA</span></label>
+                            <label class="flex cursor-pointer items-center justify-between rounded-md border border-slate-200 p-3 text-sm" data-cat-option><span><input class="mr-3 accent-primary" name="modal-cat" type="radio">Pelouse</span><span>1 500 FCFA</span></label>
+                        </div>
+                    </div>
+                    <div class="border-slate-200 md:border-l md:pl-6">
+                        <h3 class="mb-3 text-sm font-extrabold">Nombre de billets <i class="fa-solid fa-chevron-down ml-1 text-xs"></i></h3>
+                        <div class="inline-grid grid-cols-3 overflow-hidden rounded-lg border border-slate-200 bg-slate-50">
+                            <button class="h-12 w-14 text-xl" type="button" data-qty-minus>−</button>
+                            <div class="grid h-12 w-14 place-items-center bg-white text-2xl font-extrabold" data-qty-value>2</div>
+                            <button class="h-12 w-14 text-xl" type="button" data-qty-plus>+</button>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-500">Max. 10 billets par commande</p>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <h3 class="mb-2 text-sm font-extrabold">Moyen de paiement</h3>
+                    <div class="grid gap-2 md:grid-cols-3">
+                        <button class="flex h-12 items-center justify-center gap-3 rounded-md border border-primary bg-green-50 text-sm font-bold" type="button" data-payment-option data-payment-method="Orange Money"><img class="payment-logo" alt="Logo Orange Money" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiNkcP-3jO9hJmuSHaXVo8yEzdoy-lOy8NcQgBHvbqCw&s=10">Orange Money</button>
+                        <button class="flex h-12 items-center justify-center gap-3 rounded-md border border-slate-200 text-sm font-bold" type="button" data-payment-option data-payment-method="Wave"><img class="payment-logo" alt="Logo Wave" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIYTc0sTRKt6hHZDO7y_V_5kUAECvIg20l9VEM-FDBGw&s">Wave</button>
+                        <button class="flex h-12 items-center justify-center gap-3 rounded-md border border-slate-200 text-sm font-bold" type="button" data-payment-option data-payment-method="Yas money"><img class="payment-logo" alt="Logo Yas" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Yas_logo_2024.svg/langfr-250px-Yas_logo_2024.svg.png">Yas money</button>
+                    </div>
+                </div>
+                <div class="mt-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                    <div><p class="text-sm font-semibold text-slate-500">Total</p><p class="text-2xl font-extrabold text-primary" data-modal-total>6 000 FCFA</p></div>
+                    <button class="h-12 rounded-md bg-primary px-8 text-sm font-bold text-white md:px-12" type="button" data-pay-ticket>Payer 6 000 FCFA <i class="fa-solid fa-lock ml-5"></i></button>
+                </div>
+                </div>
+
+                <div class="hidden" data-ticket-result>
+                    <div class="mb-3 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                        <button class="inline-flex h-11 items-center justify-center gap-3 rounded-md border border-slate-200 px-5 text-sm font-bold text-white" type="button" data-back-payment>
+                            <i class="fa-solid fa-chevron-left"></i>
+                            Modifier
+                        </button>
+                        <button class="inline-flex h-11 items-center justify-center gap-3 rounded-md bg-primary px-5 text-sm font-bold text-white" type="button" data-download-ticket>
+                            <i class="fa-solid fa-download"></i>
+                            Télécharger en PNG
+                        </button>
+                    </div>
+
+                    <div class="mx-auto max-w-[540px] rounded-xl bg-gradient-to-br from-darkgreen to-primary p-3 shadow-soft" data-ticket-card>
+                        <div class="mb-2 text-center text-sm font-extrabold text-white">Votre billet <i class="fa-solid fa-circle-check ml-2"></i></div>
+                        <div class="ticket-notch relative rounded-xl border border-white/10 bg-[#111111] p-4 text-white">
+                            <div class="mb-3 flex justify-center">
+                                <div class="ml-2">
+                                   <img class="h-16 w-16 rounded-md object-contain" data-ticket-main-photo crossorigin="anonymous" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbC2V4xx5ljxNawT8KIqpQgSCzMw6DniSoHZ2U14EWKQ&s=10" alt="Image du match">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4 text-center">
+                                <div><div class="crest mx-auto" data-ticket-team-logo="home"></div><b class="mt-2 block" data-ticket-home-name>Casa Sports</b></div>
+                                <span class="text-sm font-extrabold text-white/60">VS</span>
+                                <div><div class="crest mx-auto" data-ticket-team-logo="away"></div><b class="mt-2 block" data-ticket-away-name>US Gorée</b></div>
+                            </div>
+                            <div class="mt-4 grid grid-cols-2 gap-y-3 border-b border-white/10 pb-4 text-sm text-white/90">
+                                <span><i class="fa-regular fa-calendar mr-3 text-[#25d176]"></i><span data-ticket-date>25 mai 2025</span></span>
+                                <span><i class="fa-regular fa-clock mr-3 text-[#25d176]"></i><span data-ticket-time>16:00</span></span>
+                                <span><i class="fa-solid fa-landmark mr-3 text-[#25d176]"></i><span data-ticket-stadium>Stade Amadou Barry</span></span>
+                                <span><i class="fa-solid fa-location-dot mr-3 text-[#25d176]"></i><span data-ticket-city>Guédiawaye</span></span>
+                            </div>
+                            <div class="mt-4 grid grid-cols-[1fr_96px] gap-4">
+                                <div class="space-y-3 text-sm">
+                                    <p><span class="inline-block w-28 text-white/60">Catégorie</span><b class="text-white" data-ticket-category>Tribune</b></p>
+                                    <p><span class="inline-block w-28 text-white/60">N° de billets</span><b class="text-white" data-ticket-quantity>2</b></p>
+                                    <p><span class="inline-block w-28 text-white/60">Commande</span><b class="text-white" data-ticket-order>#L1S-2025-0525-1A2B3</b></p>
+                                </div>
+                                <img
+                                    class="qr-img h-24 w-24 rounded-md border-4 border-white shadow-inner"
+                                    data-ticket-qr
+                                    crossorigin="anonymous"
+                                    alt="Code QR du billet"
+                                    src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=SENTICKET">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 px-6 py-3 text-white">
+                            <div>
+                                <p class="text-xs text-white/75">Code d'accès</p>
+                                <p class="mt-2 text-lg font-extrabold tracking-wider" data-ticket-access-code>C7A9-4F2D-8B6E</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs text-white/75">Présentez ce code au contrôle</p>
+                                <p class="mt-2 text-xs font-semibold">Merci et bon match !</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-2 bg-gradient-to-r from-darkgreen to-[#006b3a] text-white">
+        <div class="mx-auto flex max-w-[1260px] flex-col items-center justify-between gap-5 px-5 py-5 md:flex-row">
+            <div class="flex items-center gap-3">
+                 <a class="flex items-center gap-3 text-white" href="#">
+                <div class="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-[#14b85d] to-[#0a743e] shadow-lg shadow-green-900/40"><i class="fa-solid fa-futbol text-2xl"></i></div>
+                <div class="leading-none">
+                    <div class="text-2xl font-extrabold tracking-tight">SEN<span class="text-[#18b85f]">TICKET</span></div>
+                    <div class="mt-1.5 text-sm font-medium text-white/75">Billetterie Officielle</div>
+                </div>
+            </a>
+                
+            </div>
+            <p class="text-xs text-white/80">© 2025 Ligue 1 Sénégal. Tous droits réservés.</p>
+            <div class="flex gap-3">
+                <a class="grid h-9 w-9 place-items-center rounded-full border border-white/40" href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a class="grid h-9 w-9 place-items-center rounded-full border border-white/40" href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a class="grid h-9 w-9 place-items-center rounded-full border border-white/40" href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a class="grid h-9 w-9 place-items-center rounded-full border border-white/40" href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script>
+        const ticketModal = document.getElementById("ticketModal");
+        const modalTitle = ticketModal.querySelector("[data-modal-match-title]");
+        const modalTime = ticketModal.querySelector("[data-modal-match-time]");
+        const modalPlace = ticketModal.querySelector("[data-modal-match-place]");
+        const modalHomeLogo = ticketModal.querySelector('[data-modal-team-logo="home"]');
+        const modalAwayLogo = ticketModal.querySelector('[data-modal-team-logo="away"]');
+        const paymentView = ticketModal.querySelector("[data-ticket-payment]");
+        const ticketResultView = ticketModal.querySelector("[data-ticket-result]");
+        const payTicketButton = ticketModal.querySelector("[data-pay-ticket]");
+        const backPaymentButton = ticketModal.querySelector("[data-back-payment]");
+        const downloadTicketButton = ticketModal.querySelector("[data-download-ticket]");
+        const ticketCard = ticketModal.querySelector("[data-ticket-card]");
+        const ticketMainPhoto = ticketModal.querySelector("[data-ticket-main-photo]");
+        const ticketHomeLogo = ticketModal.querySelector('[data-ticket-team-logo="home"]');
+        const ticketAwayLogo = ticketModal.querySelector('[data-ticket-team-logo="away"]');
+        const ticketHomeName = ticketModal.querySelector("[data-ticket-home-name]");
+        const ticketAwayName = ticketModal.querySelector("[data-ticket-away-name]");
+        const ticketDate = ticketModal.querySelector("[data-ticket-date]");
+        const ticketTime = ticketModal.querySelector("[data-ticket-time]");
+        const ticketStadium = ticketModal.querySelector("[data-ticket-stadium]");
+        const ticketCity = ticketModal.querySelector("[data-ticket-city]");
+        const ticketCategory = ticketModal.querySelector("[data-ticket-category]");
+        const ticketQuantity = ticketModal.querySelector("[data-ticket-quantity]");
+        const ticketOrder = ticketModal.querySelector("[data-ticket-order]");
+        const ticketQr = ticketModal.querySelector("[data-ticket-qr]");
+        const ticketAccessCode = ticketModal.querySelector("[data-ticket-access-code]");
+        const qtyValue = ticketModal.querySelector("[data-qty-value]");
+        const qtyMinus = ticketModal.querySelector("[data-qty-minus]");
+        const qtyPlus = ticketModal.querySelector("[data-qty-plus]");
+        const modalTotal = ticketModal.querySelector("[data-modal-total]");
+        const categoryOptions = ticketModal.querySelectorAll("[data-cat-option]");
+        const paymentOptions = ticketModal.querySelectorAll("[data-payment-option]");
+        let currentMatch = null;
+        let selectedPaymentMethod = "Orange Money";
+
+        const setModalLogo = (target, sourceCrest, teamName) => {
+            const sourceImg = sourceCrest?.querySelector("img");
+            const sourceFallback = sourceCrest?.querySelector("span");
+
+            if (sourceImg?.src) {
+                target.innerHTML = "";
+                const image = document.createElement("img");
+                image.crossOrigin = "anonymous";
+                image.alt = sourceImg.alt || `Logo ${teamName}`;
+                image.src = sourceImg.src;
+                target.appendChild(image);
+                return;
+            }
+
+            target.innerHTML = "";
+            const fallback = document.createElement("span");
+            fallback.className = sourceFallback?.className || "bg-primary";
+            fallback.textContent = sourceFallback?.textContent.trim() || teamName.slice(0, 3).toUpperCase();
+            target.appendChild(fallback);
+        };
+
+        const getMatchInfo = (button) => {
+            const card = button.closest("article, .hero-card");
+            const teamCrests = Array.from(card.querySelectorAll(".crest")).slice(0, 2);
+            const teamNames = teamCrests.map((crest) => {
+                const nameElement = crest.parentElement.querySelector("h3, b");
+                return nameElement?.textContent.trim() || "";
+            });
+            const badge = card.querySelector(".rounded-full")?.textContent.trim() || "Match";
+            const detailsGrid = card.querySelector(".fa-landmark")?.closest(".grid");
+            const details = detailsGrid
+                ? Array.from(detailsGrid.querySelectorAll("span")).map((span) => span.textContent.trim()).filter(Boolean)
+                : [];
+            const stadiumBlock = card.querySelector(".fa-landmark")?.closest(".flex");
+            const stadiumText = stadiumBlock?.querySelector("p.font-extrabold")?.textContent.trim() || "";
+            const cityText = stadiumBlock?.querySelector("p:not(.font-extrabold)")?.textContent.trim() || "";
+            const timeText = card.querySelector(".fa-clock")?.parentElement?.textContent.trim() || "";
+            const date = details[0] || badge;
+            const time = details[1] || timeText;
+            const stadium = details[2] || stadiumText;
+            const city = details[3] || cityText;
+
+            return {
+                homeName: teamNames[0] || "Equipe domicile",
+                awayName: teamNames[1] || "Equipe exterieure",
+                homeCrest: teamCrests[0],
+                awayCrest: teamCrests[1],
+                mainPhoto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbC2V4xx5ljxNawT8KIqpQgSCzMw6DniSoHZ2U14EWKQ&s=10",
+                date,
+                time,
+                stadium,
+                city
+            };
+        };
+
+        const updateTicketModal = (button) => {
+            const match = getMatchInfo(button);
+            currentMatch = match;
+            modalTitle.textContent = `${match.homeName} vs ${match.awayName}`;
+            modalTime.textContent = [match.date, match.time].filter(Boolean).join(" - ");
+            modalPlace.textContent = [match.stadium, match.city].filter(Boolean).join(", ");
+            setModalLogo(modalHomeLogo, match.homeCrest, match.homeName);
+            setModalLogo(modalAwayLogo, match.awayCrest, match.awayName);
+        };
+
+        const showPaymentView = () => {
+            paymentView.classList.remove("hidden");
+            ticketResultView.classList.add("hidden");
+        };
+
+        const showTicketView = () => {
+            paymentView.classList.add("hidden");
+            ticketResultView.classList.remove("hidden");
+        };
+
+        const randomCode = (groups = 4, size = 4) => {
+            const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+            return Array.from({ length: groups }, () =>
+                Array.from({ length: size }, () => chars[Math.floor(Math.random() * chars.length)]).join("")
+            ).join("-");
+        };
+
+        const selectedCategory = () => {
+            const checked = ticketModal.querySelector('input[name="modal-cat"]:checked');
+            return checked?.closest("label")?.querySelector("span")?.textContent.trim() || "Tribune";
+        };
+
+        const selectedCategoryPrice = () => {
+            const checked = ticketModal.querySelector('input[name="modal-cat"]:checked');
+            const priceText = checked?.closest("label")?.lastElementChild?.textContent || "3 000 FCFA";
+            return Number(priceText.replace(/\D/g, "")) || 3000;
+        };
+
+        const selectedQuantity = () => {
+            return qtyValue?.textContent.trim() || "2";
+        };
+
+        const formatPrice = (amount) => `${amount.toLocaleString("fr-FR").replace(/\u202f/g, " ")} FCFA`;
+
+        const updateTotal = () => {
+            const total = selectedCategoryPrice() * Number(selectedQuantity());
+            modalTotal.textContent = formatPrice(total);
+            payTicketButton.innerHTML = `Payer ${formatPrice(total)} <i class="fa-solid fa-lock ml-5"></i>`;
+        };
+
+        const setOptionActive = (option, isActive) => {
+            option.classList.toggle("border-primary", isActive);
+            option.classList.toggle("bg-green-50", isActive);
+            option.classList.toggle("font-bold", isActive);
+            option.classList.toggle("border-slate-200", !isActive);
+        };
+
+        const updateCategoryFocus = () => {
+            categoryOptions.forEach((option) => {
+                setOptionActive(option, option.querySelector("input")?.checked);
+            });
+        };
+
+        const updatePaymentFocus = (selectedButton) => {
+            if (!selectedButton) return;
+            paymentOptions.forEach((option) => {
+                setOptionActive(option, option === selectedButton);
+            });
+            selectedPaymentMethod = selectedButton.dataset.paymentMethod;
+        };
+
+        const changeQuantity = (step) => {
+            const current = Number(selectedQuantity());
+            const next = Math.min(10, Math.max(1, current + step));
+            qtyValue.textContent = next;
+            updateTotal();
+        };
+
+        const buildTicket = () => {
+            if (!currentMatch) return;
+
+            const orderNumber = `#L1S-${new Date().getFullYear()}-${randomCode(1, 5)}`;
+            const accessCode = randomCode(3, 4);
+            const qrData = encodeURIComponent(`${orderNumber} | ${accessCode} | ${selectedPaymentMethod} | ${currentMatch.homeName} vs ${currentMatch.awayName}`);
+
+            ticketMainPhoto.src = currentMatch.mainPhoto;
+            ticketHomeName.textContent = currentMatch.homeName;
+            ticketAwayName.textContent = currentMatch.awayName;
+            ticketDate.textContent = currentMatch.date;
+            ticketTime.textContent = currentMatch.time;
+            ticketStadium.textContent = currentMatch.stadium;
+            ticketCity.textContent = currentMatch.city;
+            ticketCategory.textContent = selectedCategory();
+            ticketQuantity.textContent = selectedQuantity();
+            ticketOrder.textContent = orderNumber;
+            ticketAccessCode.textContent = accessCode;
+            ticketQr.src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${qrData}`;
+            setModalLogo(ticketHomeLogo, currentMatch.homeCrest, currentMatch.homeName);
+            setModalLogo(ticketAwayLogo, currentMatch.awayCrest, currentMatch.awayName);
+        };
+
+        const downloadTicketPng = async () => {
+            if (!window.html2canvas) {
+                alert("Le module de téléchargement PNG n'est pas encore chargé. Réessayez dans quelques secondes.");
+                return;
+            }
+
+            downloadTicketButton.disabled = true;
+            downloadTicketButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Préparation...';
+
+            try {
+                const canvas = await html2canvas(ticketCard, {
+                    backgroundColor: null,
+                    scale: 2,
+                    useCORS: true
+                });
+                const link = document.createElement("a");
+                const fileName = `${currentMatch.homeName}-vs-${currentMatch.awayName}`.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+                link.download = `ticket-${fileName || "match"}.png`;
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+            } catch (error) {
+                alert("Impossible de générer le PNG avec certaines images externes. Essayez avec des images locales ou autorisées CORS.");
+            } finally {
+                downloadTicketButton.disabled = false;
+                downloadTicketButton.innerHTML = '<i class="fa-solid fa-download"></i> Télécharger en PNG';
+            }
+        };
+
+        const openTicketModal = (button) => {
+            updateTicketModal(button);
+            updateTotal();
+            updateCategoryFocus();
+            updatePaymentFocus(ticketModal.querySelector("[data-payment-option]"));
+            showPaymentView();
+            ticketModal.classList.remove("hidden");
+            ticketModal.classList.add("flex");
+            ticketModal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("overflow-hidden");
+        };
+        const closeTicketModal = () => {
+            ticketModal.classList.add("hidden");
+            ticketModal.classList.remove("flex");
+            ticketModal.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("overflow-hidden");
+        };
+
+        document.querySelectorAll("button").forEach((button) => {
+            if (button.textContent.trim().includes("Acheter")) {
+                button.addEventListener("click", () => openTicketModal(button));
+            }
+        });
+        document.querySelectorAll("[data-ticket-close]").forEach((button) => {
+            button.addEventListener("click", closeTicketModal);
+        });
+        ticketModal.querySelectorAll('input[name="modal-cat"]').forEach((input) => {
+            input.addEventListener("change", () => {
+                updateCategoryFocus();
+                updateTotal();
+            });
+        });
+        paymentOptions.forEach((button) => {
+            button.addEventListener("click", () => updatePaymentFocus(button));
+        });
+        qtyMinus.addEventListener("click", () => changeQuantity(-1));
+        qtyPlus.addEventListener("click", () => changeQuantity(1));
+        payTicketButton.addEventListener("click", () => {
+            buildTicket();
+            showTicketView();
+        });
+        backPaymentButton.addEventListener("click", showPaymentView);
+        downloadTicketButton.addEventListener("click", downloadTicketPng);
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && !ticketModal.classList.contains("hidden")) {
+                closeTicketModal();
+            }
+        });
+    </script>
+</body>
+</html>

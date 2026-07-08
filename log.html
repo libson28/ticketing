@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Connexion Agent de Contrôle</title>
+</head>
+
+<body class="bg-gray-950">
+
+    <!-- Background -->
+    <div class="relative min-h-screen flex items-center justify-center">
+
+        <!-- Image de fond -->
+        <div class="absolute inset-0">
+            <img src="hero.png"
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/80"></div>
+        </div>
+
+        <!-- Card -->
+        <div class="relative w-full max-w-md mx-4">
+
+            <div class="backdrop-blur-xl bg-white/5 border border-gray-800 rounded-3xl shadow-2xl p-10">
+
+                <!-- Logo -->
+                <div class="flex justify-center mb-6">
+                     <a class="flex items-center gap-3 text-white" href="#">
+                <div class="leading-none">
+                    <div class="text-2xl font-extrabold tracking-tight">SEN<span class="text-[#18b85f]">TICKET</span></div>
+                    <div class="mt-1.5 text-sm font-medium text-white/75">Billetterie Officielle</div>
+                </div>
+            </a>
+                </div>
+
+                <!-- Titre -->
+                <h1 class="text-3xl font-bold text-center text-white">
+                    Agent de Contrôle
+                </h1>
+
+                <p class="text-gray-400 text-center mt-2 mb-8">
+                    Connectez-vous pour accéder aux matchs et scanner les billets.
+                </p>
+
+                <!-- Formulaire -->
+                <form class="space-y-5">
+
+                    <!-- Email -->
+                    <div>
+                        <label class="text-gray-300 text-sm mb-2 block">
+                            Adresse Email
+                        </label>
+
+                        <input
+                            type="email"
+                            placeholder="agent@football.sn"
+                            class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500 transition">
+                    </div>
+
+                    <!-- Mot de passe -->
+                    <div>
+                        <label class="text-gray-300 text-sm mb-2 block">
+                            Mot de passe
+                        </label>
+
+                        <input
+                            type="password"
+                            placeholder="********"
+                            class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500 transition">
+                    </div>
+
+                    <!-- Remember -->
+                    <div class="flex items-center justify-between text-sm">
+
+                        <label class="flex items-center text-gray-400 gap-2">
+                            <input type="checkbox" class="accent-green-600">
+                            Se souvenir de moi
+                        </label>
+
+                        <a href="#" class="text-green-500 hover:text-green-400">
+                            Mot de passe oublié ?
+                        </a>
+
+                    </div>
+
+                    <!-- Bouton -->
+                    <button
+                        class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-semibold transition duration-300 shadow-lg shadow-green-700/30">
+
+                        Se connecter
+
+                    </button>
+
+                </form>
+
+              
+              
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

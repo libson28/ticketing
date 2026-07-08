@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Espace Agent de Contrôle</title>
+
+        <!-- Tailwind CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#16A34A",
+                        dark: "#020617"
+                    }
+                }
+            }
+        }
+    </script>
+
+    </head>
+
+    <body class="bg-slate-950 text-white min-h-screen">
+
+        <!-- ================= NAVBAR ================= -->
+
+        <header
+            class="fixed top-0 left-0 right-0 z-50 bg-slate-950/90 backdrop-blur border-b border-slate-800">
+
+            <div
+                class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+
+                    <div
+                        class="w-12 h-12 rounded-xl bg-green-600 flex items-center justify-center text-2xl">
+                        ⚽
+                    </div>
+
+                    <div>
+                        <div class="leading-none">
+                    <div class="text-2xl font-extrabold tracking-tight">SEN<span class="text-[#18b85f]">TICKET</span></div>
+                </div>
+
+                        <p class="text-xs text-slate-400">
+                            Espace Agent
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Agent -->
+
+                <div class="flex items-center gap-5">
+
+                    <div class="hidden md:block text-right">
+
+                        <p class="font-semibold">
+                            Mamadou Diop
+                        </p>
+
+                        <p class="text-xs text-green-400">
+                            Agent de contrôle
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-red-600 transition text-sm">
+
+                        <a href="log.html" class="text-white hover:text-gray-300">
+                            Déconnexion
+                        </a>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- ================= MAIN ================= -->
+
+        <main class="pt-28 max-w-7xl mx-auto px-6 pb-10">
+
+            <!-- ================= MATCH DU JOUR ================= -->
+
+            <section
+                class="relative overflow-hidden rounded-3xl border border-slate-800 mb-8">
+
+                <!-- Background -->
+
+                <img
+                    src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2"
+                    class="absolute inset-0 w-full h-full object-cover opacity-20">
+
+                <div class="absolute inset-0 bg-black/70"></div>
+
+                <div class="relative p-8">
+
+                    <div class="flex justify-between items-center mb-8">
+
+                        <div>
+
+                            <span
+                                class="px-3 py-1 rounded-full bg-green-600/20 text-green-400 text-sm">
+                                MATCH DU JOUR
+                            </span>
+
+                            <h2 class="text-3xl font-bold mt-4">
+                                Championnat National Sénégal
+                            </h2>
+
+                            <p class="text-slate-400 mt-2">
+                                Stade Abdoulaye Wade • Dakar
+                            </p>
+
+                        </div>
+
+                        <div
+                            class="px-4 py-2 bg-green-600 rounded-xl font-semibold">
+
+                            EN COURS
+
+                        </div>
+
+                    </div>
+
+                    <!-- Equipes -->
+
+                    <div class="flex items-center justify-center gap-12">
+
+                        <div class="text-center">
+
+                            <div class="crest mx-auto"><img
+                                    alt="Logo ASC Jaraaf"
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX8mc8jd0OHAZrD6GbX0IlSQlTQRu5d33pVd4N0Ve8dw&s=10" style="border-radius: 50px; width: 100px;">
+                            </div>
+
+                            <h3 class="mt-4 text-xl font-bold">
+                                Jaraaf
+                            </h3>
+
+                        </div>
+
+                        <div class="text-5xl font-bold">
+
+                            VS
+
+                        </div>
+
+                        <div class="text-center">
+
+                            <div class="crest mx-auto"><img
+                                    alt="Logo ASC Jaraaf"
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3kdw96MFpoYmr8y-IefXnxND-w01FtDr9hIjLvmvmHg&s=10" style="border-radius: 50px; width: 90px;">
+                            </div>
+
+                            <h3 class="mt-4 text-xl font-bold">
+                                Génération Foot
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mt-8 grid md:grid-cols-4 gap-4 text-center">
+
+                        <div class="bg-slate-900/70 rounded-xl p-4">
+
+                            <p class="text-slate-400 text-sm">
+                                Heure
+                            </p>
+
+                            <p class="font-bold text-xl">
+                                20:00
+                            </p>
+
+                        </div>
+
+                        <div class="bg-slate-900/70 rounded-xl p-4">
+
+                            <p class="text-slate-400 text-sm">
+                                Billets vendus
+                            </p>
+
+                            <p class="font-bold text-xl">
+                                32 540
+                            </p>
+
+                        </div>
+
+                        <div class="bg-slate-900/70 rounded-xl p-4">
+
+                            <p class="text-slate-400 text-sm">
+                                Portes ouvertes
+                            </p>
+
+                            <p class="font-bold text-xl">
+                                18:00
+                            </p>
+
+                        </div>
+
+                        <div class="bg-slate-900/70 rounded-xl p-4">
+
+                            <p class="text-slate-400 text-sm">
+                                Contrôles
+                            </p>
+
+                            <p class="font-bold text-xl text-green-400">
+                                75%
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ================= STATISTIQUES ================= -->
+
+            <section
+                class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 mb-8">
+
+                <div
+                    class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-green-500 transition">
+
+                    <p class="text-slate-400 text-sm">
+                        Billets vendus
+                    </p>
+
+                    <h3 class="text-3xl font-bold mt-2">
+                        32540
+                    </h3>
+
+                </div>
+
+                <div
+                    class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+
+                    <p class="text-slate-400 text-sm">
+                        Scannés
+                    </p>
+
+                    <h3 class="text-3xl font-bold mt-2">
+                        24580
+                    </h3>
+
+                </div>
+
+                <div
+                    class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+
+                    <p class="text-slate-400 text-sm">
+                        Valides
+                    </p>
+
+                    <h3 class="text-3xl font-bold mt-2 text-green-400">
+                        24120
+                    </h3>
+
+                </div>
+
+                <div
+                    class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+
+                    <p class="text-slate-400 text-sm">
+                        Invalides
+                    </p>
+
+                    <h3 class="text-3xl font-bold mt-2 text-red-500">
+                        460
+                    </h3>
+
+                </div>
+
+                <div
+                    class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+
+                    <p class="text-slate-400 text-sm">
+                        Restants
+                    </p>
+
+                    <h3 class="text-3xl font-bold mt-2">
+                        7960
+                    </h3>
+
+                </div>
+
+                <div
+                    class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+
+                    <p class="text-slate-400 text-sm">
+                        Taux contrôle
+                    </p>
+
+                    <h3 class="text-3xl font-bold mt-2 text-green-400">
+                        75%
+                    </h3>
+
+                </div>
+
+            </section>
+
+            <!-- ================= SCANNER BUTTON ================= -->
+
+            <section class="flex justify-center mb-10">
+
+                <button
+                    id="openScanner"
+                    class="flex items-center gap-3 bg-green-600 hover:bg-green-700 px-10 py-5 rounded-2xl text-xl font-bold shadow-lg shadow-green-900/40 transition">
+
+                    <span class="text-3xl">
+                        ▣
+                    </span>
+
+                    Scanner le ticket
+
+                </button>
+
+            </section>
+
+            <!-- ================= OUTILS TABLEAU ================= -->
+
+            <section
+                class="bg-slate-900 border border-slate-800 rounded-3xl p-6 mb-10">
+
+                <!-- Header tableau -->
+
+                <div
+                    class="flex flex-col lg:flex-row justify-between gap-5 mb-6">
+
+                    <div>
+
+                        <h2 class="text-2xl font-bold">
+                            Historique des contrôles
+                        </h2>
+
+                        <p class="text-slate-400 text-sm mt-1">
+                            Suivi des tickets scannés pendant le match
+                        </p>
+
+                    </div>
+
+                    <!-- Actions -->
+
+                    <div class="flex flex-wrap gap-3">
+
+                        <input
+                            id="ticketSearch"
+                            type="text"
+                            placeholder="Rechercher un ticket..."
+                            class="bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 outline-none focus:border-green-500">
+
+                        <select
+                            id="statusFilter"
+                            class="bg-slate-950 border border-slate-700 rounded-xl px-4 py-2">
+
+                            <option>
+                                Tous les statuts
+                            </option>
+
+                            <option>
+                                Valides
+                            </option>
+
+                            <option>
+                                Invalides
+                            </option>
+
+                        </select>
+
+                        <select
+                            class="bg-slate-950 border border-slate-700 rounded-xl px-4 py-2">
+
+                            <option>
+                                Tous les matchs
+                            </option>
+
+                            <option>
+                                Jaraaf vs Génération Foot
+                            </option>
+
+                        </select>
+
+                        <button
+                            class="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700">
+
+                            Actualiser
+
+                        </button>
+
+                        <button
+                            class="px-5 py-2 rounded-xl bg-green-600 hover:bg-green-700">
+
+                            Exporter
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- TABLE -->
+
+                <div class="overflow-x-auto">
+
+                    <table class="w-full text-left">
+
+                        <thead>
+
+                            <tr
+                                class="border-b border-slate-700 text-slate-400 text-sm">
+
+                                <th class="p-4">
+                                    Heure
+                                </th>
+
+                                <th class="p-4">
+                                    N° Ticket
+                                </th>
+
+                                <th class="p-4">
+                                    Supporter
+                                </th>
+
+                                <th class="p-4">
+                                    Match
+                                </th>
+
+                                <th class="p-4">
+                                    Tribune
+                                </th>
+
+                                <th class="p-4">
+                                    Porte
+                                </th>
+
+                                <th class="p-4">
+                                    Statut
+                                </th>
+
+                                <th class="p-4">
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="ticketTableBody">
+
+                            <!-- Ligne 1 -->
+
+                            <tr
+                                class="border-b border-slate-800 hover:bg-slate-800/50 transition">
+
+                                <td class="p-4">
+                                    18:45
+                                </td>
+
+                                <td class="p-4 font-semibold">
+                                    TK-908234
+                                </td>
+
+                                <td class="p-4">
+                                    Alioune Ndiaye
+                                </td>
+
+                                <td class="p-4">
+                                    Jaraaf - GF
+                                </td>
+
+                                <td class="p-4">
+                                    Tribune A
+                                </td>
+
+                                <td class="p-4">
+                                    Porte 3
+                                </td>
+
+                                <td class="p-4">
+
+                                    <span
+                                        class="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-sm">
+
+                                        Valide
+
+                                    </span>
+
+                                </td>
+
+                                <td class="p-4">
+
+                                    <button
+                                        class="text-green-400 hover:underline">
+
+                                        Voir
+
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+                            <!-- Ligne 2 -->
+
+                            <tr
+                                class="border-b border-slate-800 hover:bg-slate-800/50 transition">
+
+                                <td class="p-4">
+                                    18:48
+                                </td>
+
+                                <td class="p-4 font-semibold">
+                                    TK-908235
+                                </td>
+
+                                <td class="p-4">
+                                    Fatou Fall
+                                </td>
+
+                                <td class="p-4">
+                                    Jaraaf - GF
+                                </td>
+
+                                <td class="p-4">
+                                    Tribune B
+                                </td>
+
+                                <td class="p-4">
+                                    Porte 2
+                                </td>
+
+                                <td class="p-4">
+
+                                    <span
+                                        class="px-3 py-1 rounded-full bg-red-500/20 text-red-400 text-sm">
+
+                                        Invalide
+
+                                    </span>
+
+                                </td>
+
+                                <td class="p-4">
+
+                                    <button
+                                        class="text-red-400 hover:underline">
+
+                                        Voir
+
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+                            <!-- Ligne 3 -->
+
+                            <tr
+                                class="border-b border-slate-800 hover:bg-slate-800/50 transition">
+
+                                <td class="p-4">
+                                    18:52
+                                </td>
+
+                                <td class="p-4 font-semibold">
+                                    TK-908236
+                                </td>
+
+                                <td class="p-4">
+                                    Ousmane Ba
+                                </td>
+
+                                <td class="p-4">
+                                    Jaraaf - GF
+                                </td>
+
+                                <td class="p-4">
+                                    Tribune C
+                                </td>
+
+                                <td class="p-4">
+                                    Porte 1
+                                </td>
+
+                                <td class="p-4">
+
+                                    <span
+                                        class="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-sm">
+
+                                        Valide
+
+                                    </span>
+
+                                </td>
+
+                                <td class="p-4">
+
+                                    <button
+                                        class="text-green-400 hover:underline">
+
+                                        Voir
+
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+                            <!-- Ligne 4 -->
+
+                            <tr class="hover:bg-slate-800/50 transition">
+
+                                <td class="p-4">
+                                    18:55
+                                </td>
+
+                                <td class="p-4 font-semibold">
+                                    TK-908237
+                                </td>
+
+                                <td class="p-4">
+                                    Mame Diarra
+                                </td>
+
+                                <td class="p-4">
+                                    Jaraaf - GF
+                                </td>
+
+                                <td class="p-4">
+                                    Tribune A
+                                </td>
+
+                                <td class="p-4">
+                                    Porte 3
+                                </td>
+
+                                <td class="p-4">
+
+                                    <span
+                                        class="px-3 py-1 rounded-full bg-red-500/20 text-red-400 text-sm">
+
+                                        Invalide
+
+                                    </span>
+
+                                </td>
+
+                                <td class="p-4">
+
+                                    <button
+                                        class="text-red-400 hover:underline">
+
+                                        Voir
+
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- PAGINATION -->
+
+                <div class="flex justify-between items-center mt-6">
+
+                    <p class="text-sm text-slate-400">
+
+                        Affichage 1 - 10 sur 2540 tickets
+
+                    </p>
+
+                    <div class="flex gap-2">
+
+                        <button
+                            class="px-4 py-2 bg-slate-800 rounded-lg">
+
+                            Précédent
+
+                        </button>
+
+                        <button
+                            class="px-4 py-2 bg-green-600 rounded-lg">
+
+                            1
+
+                        </button>
+
+                        <button
+                            class="px-4 py-2 bg-slate-800 rounded-lg">
+
+                            2
+
+                        </button>
+
+                        <button
+                            class="px-4 py-2 bg-slate-800 rounded-lg">
+
+                            3
+
+                        </button>
+
+                        <button
+                            class="px-4 py-2 bg-slate-800 rounded-lg">
+
+                            Suivant
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ================= SCANNER MODAL ================= -->
+
+            <div
+                id="scannerModal"
+                class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 px-4 py-6 backdrop-blur">
+
+                <div class="absolute inset-0" data-close-scanner></div>
+
+                <div
+                    class="relative z-10 w-full max-w-5xl overflow-hidden rounded-3xl border border-slate-800 bg-slate-950 shadow-2xl shadow-black">
+
+                    <div
+                        class="flex items-center justify-between border-b border-slate-800 px-6 py-4">
+
+                        <div>
+                            <p class="text-xs font-bold uppercase tracking-[.3em] text-green-400">
+                                Scanner interne
+                            </p>
+                            <h2 class="mt-1 text-2xl font-extrabold">
+                                Contrôle de ticket
+                            </h2>
+                        </div>
+
+                        <button
+                            class="grid h-10 w-10 place-items-center rounded-full bg-slate-900 text-xl text-slate-300 hover:bg-red-600 hover:text-white"
+                            type="button"
+                            aria-label="Fermer le scanner"
+                            data-close-scanner>
+                            ×
+                        </button>
+
+                    </div>
+
+                    <div class="grid gap-0 lg:grid-cols-[1.2fr_.8fr]">
+
+                        <div class="border-b border-slate-800 p-5 lg:border-b-0 lg:border-r">
+
+                            <div
+                                class="relative aspect-video overflow-hidden rounded-2xl border border-slate-800 bg-black">
+
+                                <video
+                                    id="scannerVideo"
+                                    class="h-full w-full object-cover"
+                                    autoplay
+                                    muted
+                                    playsinline></video>
+
+                                <div
+                                    id="cameraPlaceholder"
+                                    class="absolute inset-0 grid place-items-center bg-slate-950 text-center">
+                                    <div>
+                                        <div
+                                            class="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-2xl bg-green-500/15 text-3xl text-green-400">
+                                            ▣
+                                        </div>
+                                        <p class="text-lg font-bold">
+                                            Caméra prête
+                                        </p>
+                                        <p class="mt-2 max-w-sm text-sm text-slate-400">
+                                            Lancez la caméra ou saisissez un code ticket pour simuler le contrôle.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div id="scannerStatus" class="mt-3 text-sm text-slate-400 px-6">
+                                    Appuyez sur "Ouvrir la caméra" pour démarrer le scan.
+                                </div>
+
+                                <div
+                                    class="pointer-events-none absolute inset-x-10 top-1/2 h-0.5 -translate-y-1/2 bg-green-400 shadow-[0_0_24px_rgba(34,197,94,.9)]">
+                                </div>
+
+                                <div
+                                    class="pointer-events-none absolute inset-10 rounded-2xl border-2 border-green-400/70">
+                                </div>
+
+                            </div>
+
+                            <div class="mt-4 grid gap-3 md:grid-cols-3">
+                                <button
+                                    id="startCamera"
+                                    class="h-12 rounded-xl bg-green-600 px-5 text-sm font-bold hover:bg-green-700"
+                                    type="button">
+                                    Ouvrir la caméra
+                                </button>
+                                <button
+                                    id="simulateValidScan"
+                                    class="h-12 rounded-xl bg-slate-800 px-5 text-sm font-bold hover:bg-slate-700"
+                                    type="button">
+                                    Tester valide
+                                </button>
+                                <button
+                                    id="simulateInvalidScan"
+                                    class="h-12 rounded-xl bg-slate-800 px-5 text-sm font-bold hover:bg-slate-700"
+                                    type="button">
+                                    Tester invalide
+                                </button>
+                            </div>
+
+                            <div class="mt-4 flex flex-col gap-3 md:flex-row">
+                                <input
+                                    id="manualTicketCode"
+                                    class="h-12 flex-1 rounded-xl border border-slate-700 bg-slate-900 px-4 text-sm outline-none focus:border-green-500"
+                                    placeholder="Entrer un code ticket, ex: TK-908234">
+                                <button
+                                    id="manualScan"
+                                    class="h-12 rounded-xl bg-slate-100 px-6 text-sm font-extrabold text-slate-950 hover:bg-white"
+                                    type="button">
+                                    Vérifier
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <aside class="p-5">
+
+                            <div
+                                id="scanResult"
+                                class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+
+                                <p class="text-sm font-bold text-slate-400">
+                                    Résultat du scan
+                                </p>
+
+                                <div class="mt-6 text-center text-slate-400">
+                                    <div
+                                        class="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-full bg-slate-800 text-2xl">
+                                        ?
+                                    </div>
+                                    <p class="font-semibold">
+                                        Aucun ticket scanné
+                                    </p>
+                                    <p class="mt-2 text-sm">
+                                        Le statut apparaîtra ici après lecture du QR code.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <div class="mt-5 rounded-2xl border border-slate-800 bg-slate-900 p-5">
+                                <h3 class="font-bold">
+                                    Tickets de démonstration
+                                </h3>
+                                <div class="mt-4 grid gap-2 text-sm text-slate-300">
+                                    <button class="rounded-lg bg-slate-950 px-4 py-3 text-left hover:bg-slate-800" data-demo-code="TK-908234">
+                                        TK-908234 · Valide · Alioune Ndiaye
+                                    </button>
+                                    <button class="rounded-lg bg-slate-950 px-4 py-3 text-left hover:bg-slate-800" data-demo-code="TK-908235">
+                                        TK-908235 · Invalide · Fatou Fall
+                                    </button>
+                                    <button class="rounded-lg bg-slate-950 px-4 py-3 text-left hover:bg-slate-800" data-demo-code="TK-908236">
+                                        TK-908236 · Valide · Ousmane Ba
+                                    </button>
+                                </div>
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+        <script src="https://unpkg.com/jsqr@1.4.0/dist/jsQR.js"></script>
+        <script>
+            const tickets = [
+                { time: "18:45", code: "TK-908234", supporter: "Alioune Ndiaye", match: "Jaraaf - GF", tribune: "Tribune A", gate: "Porte 3", status: "Valide" },
+                { time: "18:48", code: "TK-908235", supporter: "Fatou Fall", match: "Jaraaf - GF", tribune: "Tribune B", gate: "Porte 2", status: "Invalide" },
+                { time: "18:52", code: "TK-908236", supporter: "Ousmane Ba", match: "Jaraaf - GF", tribune: "Tribune C", gate: "Porte 1", status: "Valide" },
+                { time: "18:55", code: "TK-908237", supporter: "Mame Diarra", match: "Jaraaf - GF", tribune: "Tribune A", gate: "Porte 3", status: "Invalide" },
+                { time: "19:02", code: "TK-908238", supporter: "Cheikh Sarr", match: "Jaraaf - GF", tribune: "VIP", gate: "Porte 4", status: "Valide" }
+            ];
+
+            const scannerModal = document.getElementById("scannerModal");
+            const openScanner = document.getElementById("openScanner");
+            const scannerVideo = document.getElementById("scannerVideo");
+            const cameraPlaceholder = document.getElementById("cameraPlaceholder");
+            const scannerStatus = document.getElementById("scannerStatus");
+            const startCamera = document.getElementById("startCamera");
+            const simulateValidScan = document.getElementById("simulateValidScan");
+            const simulateInvalidScan = document.getElementById("simulateInvalidScan");
+            const manualTicketCode = document.getElementById("manualTicketCode");
+            const manualScan = document.getElementById("manualScan");
+            const scanResult = document.getElementById("scanResult");
+            const ticketSearch = document.getElementById("ticketSearch");
+            const statusFilter = document.getElementById("statusFilter");
+            const tableBody = document.getElementById("ticketTableBody");
+            let cameraStream = null;
+            let scanInterval = null;
+            const scannerCanvas = document.createElement("canvas");
+            const scannerContext = scannerCanvas.getContext("2d");
+
+            const updateScannerStatus = (text, colorClass = "text-slate-400") => {
+                scannerStatus.textContent = text;
+                scannerStatus.className = `mt-3 text-sm ${colorClass}`;
+            };
+
+            const stopScanningLoop = () => {
+                if (scanInterval) {
+                    clearInterval(scanInterval);
+                    scanInterval = null;
+                }
+            };
+
+            const startScanningLoop = () => {
+                stopScanningLoop();
+
+                if (!scannerVideo.videoWidth || !scannerVideo.videoHeight) {
+                    updateScannerStatus("Initialisation de la caméra…", "text-slate-300");
+                    return;
+                }
+
+                scannerCanvas.width = scannerVideo.videoWidth;
+                scannerCanvas.height = scannerVideo.videoHeight;
+
+                scanInterval = setInterval(() => {
+                    scannerContext.drawImage(scannerVideo, 0, 0, scannerCanvas.width, scannerCanvas.height);
+                    const imageData = scannerContext.getImageData(0, 0, scannerCanvas.width, scannerCanvas.height);
+                    const code = window.jsQR(imageData.data, imageData.width, imageData.height, { inversionAttempts: "attemptBoth" });
+                    if (code?.data) {
+                        updateScannerStatus(`Code détecté : ${code.data}`, "text-green-400");
+                        scanCode(code.data);
+                        stopScanningLoop();
+                    }
+                }, 500);
+            };
+
+            const setCameraStarted = () => {
+                cameraPlaceholder.classList.add("hidden");
+                updateScannerStatus("Caméra active : approchez un QR code ou utilisez la saisie manuelle.", "text-slate-300");
+                if (scannerVideo.readyState >= 2) {
+                    startScanningLoop();
+                }
+            };
+
+            scannerVideo.addEventListener("loadedmetadata", () => {
+                if (cameraStream) {
+                    startScanningLoop();
+                }
+            });
+
+            const statusBadge = (status) => {
+                const isValid = status === "Valide";
+                return `<span class="px-3 py-1 rounded-full ${isValid ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400"} text-sm">${status}</span>`;
+            };
+
+            const renderRows = () => {
+                const query = ticketSearch.value.trim().toLowerCase();
+                const status = statusFilter.value;
+                const filtered = tickets.filter((ticket) => {
+                    const matchesSearch = [ticket.code, ticket.supporter, ticket.match, ticket.tribune, ticket.gate]
+                        .join(" ")
+                        .toLowerCase()
+                        .includes(query);
+                    const matchesStatus = status === "Tous les statuts" || ticket.status === status.replace("s", "");
+                    return matchesSearch && matchesStatus;
+                });
+
+                tableBody.innerHTML = filtered.map((ticket) => `
+                    <tr class="border-b border-slate-800 hover:bg-slate-800/50 transition">
+                        <td class="p-4">${ticket.time}</td>
+                        <td class="p-4 font-semibold">${ticket.code}</td>
+                        <td class="p-4">${ticket.supporter}</td>
+                        <td class="p-4">${ticket.match}</td>
+                        <td class="p-4">${ticket.tribune}</td>
+                        <td class="p-4">${ticket.gate}</td>
+                        <td class="p-4">${statusBadge(ticket.status)}</td>
+                        <td class="p-4"><button class="${ticket.status === "Valide" ? "text-green-400" : "text-red-400"} hover:underline">Voir</button></td>
+                    </tr>
+                `).join("");
+            };
+
+            const openScannerModal = () => {
+                scannerModal.classList.remove("hidden");
+                scannerModal.classList.add("flex");
+                document.body.classList.add("overflow-hidden");
+                manualTicketCode.focus();
+            };
+
+            const stopCamera = () => {
+                stopScanningLoop();
+                if (cameraStream) {
+                    cameraStream.getTracks().forEach((track) => track.stop());
+                    cameraStream = null;
+                }
+                scannerVideo.srcObject = null;
+                cameraPlaceholder.classList.remove("hidden");
+            };
+
+            const closeScannerModal = () => {
+                scannerModal.classList.add("hidden");
+                scannerModal.classList.remove("flex");
+                document.body.classList.remove("overflow-hidden");
+                stopCamera();
+            };
+
+            const showResult = (ticket, code) => {
+                const isValid = ticket?.status === "Valide";
+                const isKnown = Boolean(ticket);
+                const status = isKnown ? ticket.status : "Invalide";
+                const title = isValid ? "Ticket valide" : "Ticket invalide";
+                const detail = isKnown
+                    ? `${ticket.supporter} · ${ticket.tribune} · ${ticket.gate}`
+                    : `Code inconnu : ${code || "non reconnu"}`;
+
+                scanResult.className = `rounded-2xl border p-5 ${isValid ? "border-green-500/40 bg-green-500/10" : "border-red-500/40 bg-red-500/10"}`;
+                scanResult.innerHTML = `
+                    <p class="text-sm font-bold ${isValid ? "text-green-400" : "text-red-400"}">Résultat du scan</p>
+                    <div class="mt-6 text-center">
+                        <div class="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-full ${isValid ? "bg-green-500 text-white" : "bg-red-500 text-white"} text-3xl">
+                            ${isValid ? "✓" : "!"}
+                        </div>
+                        <h3 class="text-2xl font-extrabold">${title}</h3>
+                        <p class="mt-2 text-sm text-slate-300">${detail}</p>
+                        <div class="mt-5 rounded-xl bg-slate-950/70 p-4 text-left text-sm">
+                            <p><span class="text-slate-400">Code</span> <b class="float-right">${ticket?.code || code || "-"}</b></p>
+                            <p class="mt-2"><span class="text-slate-400">Match</span> <b class="float-right">${ticket?.match || "Jaraaf - GF"}</b></p>
+                            <p class="mt-2"><span class="text-slate-400">Statut</span> <b class="float-right ${isValid ? "text-green-400" : "text-red-400"}">${status}</b></p>
+                        </div>
+                    </div>
+                `;
+
+                if (!isKnown) {
+                    const now = new Date();
+                    tickets.unshift({
+                        time: now.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }),
+                        code: code || `TK-${Math.floor(100000 + Math.random() * 899999)}`,
+                        supporter: "Inconnu",
+                        match: "Jaraaf - GF",
+                        tribune: "-",
+                        gate: "Porte contrôle",
+                        status: "Invalide"
+                    });
+                    renderRows();
+                }
+            };
+
+            const scanCode = (code) => {
+                const normalizedCode = (code || "").trim().toUpperCase();
+                const ticket = tickets.find((item) => item.code.toUpperCase() === normalizedCode);
+                showResult(ticket, normalizedCode);
+            };
+
+            openScanner.addEventListener("click", openScannerModal);
+            document.querySelectorAll("[data-close-scanner]").forEach((button) => {
+                button.addEventListener("click", closeScannerModal);
+            });
+
+            startCamera.addEventListener("click", async () => {
+                try {
+                    cameraStream = await navigator.mediaDevices.getUserMedia({
+                        video: { facingMode: "environment" },
+                        audio: false
+                    });
+                    scannerVideo.srcObject = cameraStream;
+                    cameraPlaceholder.classList.add("hidden");
+                    setCameraStarted();
+                } catch (error) {
+                    cameraPlaceholder.classList.remove("hidden");
+                    cameraPlaceholder.innerHTML = `
+                        <div>
+                            <div class="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-2xl bg-red-500/15 text-3xl text-red-400">!</div>
+                            <p class="text-lg font-bold">Caméra indisponible</p>
+                            <p class="mt-2 max-w-sm text-sm text-slate-400">Autorisez la caméra dans le navigateur ou utilisez la saisie manuelle.</p>
+                        </div>
+                    `;
+                }
+            });
+
+            simulateValidScan.addEventListener("click", () => scanCode("TK-908234"));
+            simulateInvalidScan.addEventListener("click", () => scanCode("TK-908237"));
+            manualScan.addEventListener("click", () => scanCode(manualTicketCode.value));
+            manualTicketCode.addEventListener("keydown", (event) => {
+                if (event.key === "Enter") scanCode(manualTicketCode.value);
+            });
+            document.querySelectorAll("[data-demo-code]").forEach((button) => {
+                button.addEventListener("click", () => {
+                    manualTicketCode.value = button.dataset.demoCode;
+                    scanCode(button.dataset.demoCode);
+                });
+            });
+            ticketSearch.addEventListener("input", renderRows);
+            statusFilter.addEventListener("change", renderRows);
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape" && !scannerModal.classList.contains("hidden")) {
+                    closeScannerModal();
+                }
+            });
+            renderRows();
+        </script>
+
+    </body>
+
+</html>
