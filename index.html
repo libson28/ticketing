@@ -518,13 +518,13 @@
         </section>
     </main>
 
-    <div id="ticketModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 px-4 py-3 backdrop-blur-sm h-full" aria-hidden="true">
+    <div id="ticketModal" class="fixed inset-0 z-[100] hidden items-start sm:items-center justify-center overflow-y-auto bg-black/70 px-4 py-4 backdrop-blur-sm" aria-hidden="true">
         <div class="absolute inset-0" data-ticket-close></div>
-        <div class="relative z-10 w-full max-w-[960px]">
+        <div class="relative z-10 mx-auto w-full max-w-[960px]">
             <button class="absolute -right-2 -top-2 grid h-10 w-10 place-items-center rounded-full bg-white text-slate-950 shadow-xl" type="button" aria-label="Fermer la popup" data-ticket-close>
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="surface-dark max-h-[calc(100vh-2rem)] overflow-hidden rounded-xl border border-slate-200 bg-[#111111] p-4 text-white shadow-soft">
+            <div class="surface-dark max-h-[calc(100vh-2rem)] overflow-y-auto rounded-xl border border-slate-200 bg-[#111111] p-4 text-white shadow-soft">
                 <div data-ticket-payment>
                 <div class="mb-4 grid grid-cols-[58px_1fr_58px] items-center gap-4 border-b border-slate-200 pb-4 md:grid-cols-[68px_1fr_68px] md:gap-5">
                     <div class="crest" data-modal-team-logo="home"><img alt="Logo Casa Sports" src="https://commons.wikimedia.org/wiki/Special:FilePath/IMG%20casa.png"></div>
